@@ -46,9 +46,13 @@ function onStartClick() {
 }
 
 function calculationStart() {
-  setInterval(() => {
+  let intervalId = setInterval(() => {
     const restTime = convertMs(chosenDate - Date.now());
     markupChange(restTime);
+    if (chosenDate - Date.now() <= 1000) {
+      clearInterval(intervalId);
+      // console.log('end');
+    }
   }, 1000);
 }
 
